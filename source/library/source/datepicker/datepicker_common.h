@@ -6,18 +6,22 @@
 
 class QApplication;
 
-#if _WIN32
-#	if defined( __MINGW32__ )
-#		define DATEPICKER_EXPORT
-#	else
-#		if defined DATEPICKER_LIBRARY
-#			define DATEPICKER_EXPORT __declspec (dllexport)
-#		else
-#			define DATEPICKER_EXPORT __declspec(dllimport)
-#		endif
-#	endif
+#if defined ( DATEPICKER_LIBRARY_ENABLE )
+#   if _WIN32
+#       if defined( __MINGW32__ )
+#       	define DATEPICKER_EXPORT
+#       else
+#           if defined DATEPICKER_LIBRARY
+#               define DATEPICKER_EXPORT __declspec (dllexport)
+#           else
+#               define DATEPICKER_EXPORT __declspec(dllimport)
+#           endif
+#       endif
+#   else
+#       define DATEPICKER_EXPORT
+#   endif
 #else
-#	define DATEPICKER_EXPORT
+#   define DATEPICKER_EXPORT
 #endif
 
 

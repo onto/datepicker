@@ -35,4 +35,7 @@ SOURCES += \
     $$PWD/datepickerhumanreadableformater.cpp \
     $$PWD/datepickertimeedit.cpp
 
+RESOURCES += \
+    $$PWD/../resource/datepicker_icons.qrc
+
 

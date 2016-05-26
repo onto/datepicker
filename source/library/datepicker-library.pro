@@ -12,7 +12,7 @@ CODECFORSRC = UTF-8
 DEFINES += DATEPICKER_LIBRARY_ENABLE DATEPICKER_LIBRARY
 
 RESOURCES += \
-    resource/datepicker_resources.qrc
+    resource/datepicker_locales.qrc
 
 TRANSLATIONS += \
     resource/locale/datepicker_en.ts \

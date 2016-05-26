@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/datepicker_icons">
+        <file alias="calendar-button-icon">icons/calendar-button-icon.png</file>
+    </qresource>
+</RCC>

@@ -201,18 +201,40 @@ void DatePickerPopup::onCalendar1DateSelected(const QDate &date)
 {
     Q_D(DatePickerPopup);
 
+    QDateTime datetime_1(date, d->time_edit_1->time());
+    QDateTime datetime_2(d->calendar_widget_2->selectedDate(), d->time_edit_2->time());
+
+    if (datetime_1 >= datetime_2) {
+
+        datetime_1 = datetime_2.addSecs(-1);
+        d->time_edit_1->setTime(datetime_1.time());
+        d->calendar_widget_1->setDate(datetime_1.date());
+        return;
+    }
+
     if (d->footer->pickerType() == DayType)
-        emit dateSelected(date);
+        emit dateSelected(datetime_1.date());
     if (d->footer->pickerType() == PeriodType)
-        emit datePeriodSelected(date, d->calendar_widget_2->selectedDate());
+        emit datePeriodSelected(datetime_1.date(), d->calendar_widget_2->selectedDate());
 }
 
 void DatePickerPopup::onCalendar2DateSelected(const QDate &date)
 {
     Q_D(DatePickerPopup);
 
+    QDateTime datetime_1(d->calendar_widget_1->selectedDate(), d->time_edit_1->time());
+    QDateTime datetime_2(date, d->time_edit_2->time());
+
+    if (datetime_1 >= datetime_2) {
+
+        datetime_2 = datetime_1.addSecs(1);
+        d->time_edit_2->setTime(datetime_2.time());
+        d->calendar_widget_2->setDate(datetime_2.date());
+        return;
+    }
+
     if (d->footer->pickerType() == PeriodType)
-        emit datePeriodSelected(d->calendar_widget_1->selectedDate(), date);
+        emit datePeriodSelected(d->calendar_widget_1->selectedDate(), datetime_2.date());
     if (isTimeEditable())
         emit timePeriodSelected(d->time_edit_1->time(), d->time_edit_2->time());
 }
@@ -237,16 +259,38 @@ void DatePickerPopup::onTimeEdit1TimeChanged(const QTime &time)
 {
     Q_D(DatePickerPopup);
 
+    QDateTime datetime_1(d->calendar_widget_1->selectedDate(), time);
+    QDateTime datetime_2(d->calendar_widget_2->selectedDate(), d->time_edit_2->time());
+
+    if (datetime_1 >= datetime_2) {
+
+        datetime_1 = datetime_2.addSecs(-1);
+        d->time_edit_1->setTime(datetime_1.time());
+        d->calendar_widget_1->setDate(datetime_1.date());
+        return;
+    }
+
     if (isTimeEditable())
-        emit timePeriodSelected(time, d->time_edit_2->time());
+        emit timePeriodSelected(datetime_1.time(), d->time_edit_2->time());
 }
 
 void DatePickerPopup::onTimeEdit2TimeChanged(const QTime &time)
 {
     Q_D(DatePickerPopup);
 
+    QDateTime datetime_1(d->calendar_widget_1->selectedDate(), d->time_edit_1->time());
+    QDateTime datetime_2(d->calendar_widget_2->selectedDate(), time);
+
+    if (datetime_1 >= datetime_2) {
+
+        datetime_2 = datetime_1.addSecs(1);
+        d->time_edit_2->setTime(datetime_2.time());
+        d->calendar_widget_2->setDate(datetime_2.date());
+        return;
+    }
+
     if (isTimeEditable())
-        emit timePeriodSelected(d->time_edit_1->time(), time);
+        emit timePeriodSelected(d->time_edit_1->time(), datetime_2.time());
 }
 
 void DatePickerPopup::paintEvent(QPaintEvent *event)

@@ -35,9 +35,4 @@ SOURCES += \
     $$PWD/datepickerhumanreadableformater.cpp \
     $$PWD/datepickertimeedit.cpp
 
-RESOURCES = \
-    $$PWD/../resource/datepicker_resources.qrc
 
-TRANSLATIONS = \
-    $$PWD/../resource/locale/datepicker_en.ts \
-    $$PWD/../resource/locale/datepicker_ru.ts

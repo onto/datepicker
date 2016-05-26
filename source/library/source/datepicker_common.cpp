@@ -6,8 +6,9 @@
 
 void init_datepicker(QApplication *app, const QLocale &locale)
 {
+#ifdef DATEPICKER_LIBRARY_ENABELD
     Q_INIT_RESOURCE(datepicker_resources);
-
+#endif
     QString lang = locale.name().mid(0, 2);
 
     QTranslator *datepicker_translator = new QTranslator(app);

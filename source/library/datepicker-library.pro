@@ -11,6 +11,13 @@ CODECFORSRC = UTF-8
 
 DEFINES += DATEPICKER_LIBRARY_ENABLE DATEPICKER_LIBRARY
 
+RESOURCES += \
+    resource/datepicker_resources.qrc
+
+TRANSLATIONS += \
+    resource/locale/datepicker_en.ts \
+    resource/locale/datepicker_ru.ts
+
 target.path = $$INSTALL_PREFIX/lib
 headers.path = $$INSTALL_PREFIX/include/$$DATEPICKER_LIBRARY_NAME
 headers.files = \

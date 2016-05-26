@@ -46,7 +46,7 @@ private:
 
         date_label = new QLabel(q);
         date_label->setObjectName("datepicker_label");
-        date_label->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+        date_label->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         date_label->installEventFilter(q);
 

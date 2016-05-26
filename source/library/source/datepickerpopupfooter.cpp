@@ -101,6 +101,11 @@ void DatePickerPopupFooter::setAllowedPickerTypes(DatePickerTypes picker_types)
     else
         d->period_picker_type_radio_button->setChecked(true);
 
+    if (picker_types == PeriodType || picker_types == DayType)
+        hide();
+    else
+        show();
+
     onDatePickerTypeButtonClicked();
 }
 
